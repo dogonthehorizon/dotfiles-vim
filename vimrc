@@ -1,10 +1,15 @@
 set nocompatible
-set background=dark
+
+let g:pathogen_disabled = []
+" It's been giving me grief when used with pumvisible option
+call add(g:pathogen_disabled, 'vim-autoclose')
 
 execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
+
+let mapleader = ","
 
 colorscheme monokai
 
@@ -107,7 +112,7 @@ hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=ligh
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
 " This seems to cause issues with vim-autoclose
-"\inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
