@@ -6,12 +6,16 @@ call add(g:pathogen_disabled, 'vim-autoclose')
 
 execute pathogen#infect()
 
-syntax on
 filetype plugin indent on
+syntax on
+scriptencoding utf-8
 
 let mapleader = ","
 
 colorscheme monokai
+
+" Always switch to the current file directory when opening a new buffer
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
 set ruler
 
@@ -34,6 +38,12 @@ set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatib
 set virtualedit=onemore                         " Allow for cursor beyond last character
 set history=1000                                " Store a ton of history (default is 20)"
 
+set backup "allow backups
+set undofile " persistent undo
+set undolevels=1000
+set undoreload=10000"
+
+set tabpagemax=5
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 
@@ -54,7 +64,7 @@ set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-set wrap                        " Line wrapping
+set nowrap                        " Line wrapping
 
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=4                " Use indents of 4 spaces
@@ -96,6 +106,14 @@ nnoremap Y y$
 " For when you forget to sudo.. Really write the file.
 cmap w!! w !sudo tee % >/dev/null
 
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+
+" Search for the keyword under cursor and ask which definition to jump to
+nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+set tags=./tags;/,~/.vimtags
+
 """ PIV
 let g:DisableAutoPHPFolding = 0
 let g:PIVAutoClose = 0
@@ -134,6 +152,11 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
+" Session list
+set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+nmap <leader>sl :SessionList<CR>
+nmap <leader>ss :SessionSave<CR>
+
 """ ctrlp
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <silent> <D-t> :CtrlP<CR>
@@ -149,6 +172,14 @@ let g:ctrlp_user_command = {
     \ },
     \ 'fallback': 'find %s -type f'
 \ }
+
+""" Fugitive
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
 
 """ neocomplcache
 let g:acp_enableAtStartup = 0
@@ -170,6 +201,10 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 
 let g:neocomplcache_keyword_patterns._ = '\h\w*'
+
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><CR> neocomplcache#complete_common_string()
 
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -202,4 +237,43 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+""" Functions
+function! InitializeDirectories()
+    let parent = $HOME
+    let prefix = 'vim'
+    let dir_list = {
+                \ 'backup': 'backupdir'.
+                \ 'views': 'viewdir',
+                \ 'swap': 'directory' }
+
+    let dir_list['undo'] = 'undodir'
+    let common_dir = parent . '/' . prefix
+
+    for [dirname, settingname] in items(dir_list)
+        let directory = common_dir .dirname . '/'
+        if exists("*mkdir")
+            if !isdirectory(directory)
+                call mkdir(directory)
+            endif
+        endif
+        if !isdirectory(directory)
+            echo "Warning: Unable to create backup directory: " . directory
+            echo "Try: mkdir -o " . directory
+        else
+            let directory = substitute(directory, " ", "\\\\ ", "g")
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
+endfunction
+
+
+call InitializeDirectories()
 
