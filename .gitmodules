@@ -85,3 +85,6 @@
 [submodule "bundle/neocomplcache.vim"]
 	path = bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git

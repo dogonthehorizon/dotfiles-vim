@@ -250,7 +250,7 @@ function! InitializeDirectories()
     let parent = $HOME
     let prefix = 'vim'
     let dir_list = {
-                \ 'backup': 'backupdir'.
+                \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
                 \ 'swap': 'directory' }
 
