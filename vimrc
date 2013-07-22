@@ -78,6 +78,7 @@ autocmd VimEnter * wincmd w
 " Close NERDTree with q instead of qall
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDShutUp=1
+let NERDTreeShowLineNumbers=01
 let b:match_ignorecase = 1
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
@@ -204,7 +205,7 @@ inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return neocomplete#smart_close_pop() . "\<CR>"
+    return neocomplete#smart_close_popup() . "\<CR>"
 endfunction
 
 " <TAB>: completion.
