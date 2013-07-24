@@ -12,7 +12,7 @@ scriptencoding utf-8
 
 let mapleader = ","
 
-colorscheme Monokai
+colorscheme molokai
 
 " Always switch to the current file directory when opening a new buffer
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
