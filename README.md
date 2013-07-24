@@ -1,3 +1,12 @@
+dotfiles-vim
+------------
+
+This repo is one configuration (of many) for [g|m]vim. Use them at your own risk.
+
+Eventually this repo will become a submodule of a more general `dotfiles` repo, coming Soon(tm).
+
+Questions and concerns can be directed [here](https://github.com/dogonthehorizon/dotfiles-vim/issues).
+
 Requirements:
 -------------
 
