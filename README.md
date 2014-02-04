@@ -1,4 +1,4 @@
-dotfiles-vim
+dotfiles-vim ![Generic](http://img.shields.io/status/active.png?color=green)
 ------------
 
 This repo is one configuration (of many) for [g|m]vim. Use them at your own risk.
