@@ -245,7 +245,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 """ Functions
 function! InitializeDirectories()
     let parent = $HOME
-    let prefix = 'vim'
+    let prefix = '.vim'
     let dir_list = {
                 \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
