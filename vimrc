@@ -1,8 +1,6 @@
 set nocompatible
 
 let g:pathogen_disabled = []
-" It's been giving me grief when used with pumvisible option
-call add(g:pathogen_disabled, 'vim-autoclose')
 
 execute pathogen#infect()
 
@@ -12,10 +10,18 @@ scriptencoding utf-8
 
 let mapleader = ","
 
-colorscheme molokai
+set background=dark
+colorscheme base16-eighties
+
+" Autosave open files when window loses focus
+" Note: this doesn't support saving untitled buffers
+au FocusLost * silent! wa
 
 " Always switch to the current file directory when opening a new buffer
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+
+" Remove the ugly pipe separator for windows
+set fillchars+=vert:\ 
 
 set ruler
 
@@ -27,7 +33,9 @@ let g:airline_powerline_fonts=0
 
 " vim-bufferline config
 let g:bufferline_echo=0
-set statusline=%{bufferline#generate_string()}
+autocmd VimEnter *
+  \ let &statusline='%{bufferline#refresh_status()}'
+    \ .bufferline#get_status_string()
 " end vim-bufferline config
 
 set encoding=utf-8
@@ -79,8 +87,12 @@ autocmd VimEnter * wincmd w
 " Close NERDTree with q instead of qall
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDShutUp=1
-let NERDTreeShowLineNumbers=01
+let NERDTreeShowLineNumbers=0
+let NERDTreeMinimalUI=1
+let NERDTreeWinSize=40
 let b:match_ignorecase = 1
+" Open a new NERDTree buffer with C-n
+map <C-n> :NERDTreeToggle<CR>
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
@@ -132,12 +144,12 @@ hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=ligh
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
 " This seems to cause issues with vim-autoclose
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+"inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+"inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+"inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+"inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+"inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -184,11 +196,15 @@ nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
 """ neocomplete
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 0 " Disable AutoComplPop
+
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_patter = '\*ku\*'
+
+let g:neocomplete#force_overwrite_completefunc=1
+
 let g:neocomplete#enable_auto_select = 1 " AutoComplPop like behavior.
 
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -202,11 +218,13 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
+" Plugin Keymappings
 inoremap <expr><C-g> neocomplete#undo_completion() 
 inoremap <expr><C-l> neocomplete#complete_common_string() 
+
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return neocomplete#smart_close_popup() . "\<CR>"
+    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 
 " <TAB>: completion.
@@ -214,10 +232,10 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>""
 
 " <C-h>, <BS>: close popup and delete backword char
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>" 
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup() 
-inoremap <expr><C-e>  neocomplete#cancel_popup() 
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -231,6 +249,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
@@ -241,6 +260,12 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
+
+""" Rainbow Parenthesis
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 """ Functions
 function! InitializeDirectories()
@@ -270,7 +295,6 @@ function! InitializeDirectories()
         endif
     endfor
 endfunction
-
 
 call InitializeDirectories()
 
