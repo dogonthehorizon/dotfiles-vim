@@ -27,8 +27,8 @@ set ruler
 
 " vim-airline config
 set laststatus=2
-let g:airline_theme='badwolf'
-let g:airline_powerline_fonts=0
+let g:airline_theme='base16'
+let g:airline_powerline_fonts=1
 " end vim-airline config
 
 " vim-bufferline config
