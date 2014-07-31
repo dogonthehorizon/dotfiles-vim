@@ -18,28 +18,32 @@ Requirements:
 
 Installation:
 -------------
-
-    git clone https://github.com/dogonthehorizon/dotfiles-vim.git ~/.vim
+```bash
+git clone https://github.com/dogonthehorizon/dotfiles-vim.git ~/.vim
+```
 
 ### Create symlinks:
-
-    ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/gvimrc ~/.gvimrc
+```bash
+ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/gvimrc ~/.gvimrc
+```
 
 ### Switch to the `~/.vim` directory, and fetch submodules:
-
-    cd ~/.vim
-    git submodule update --init
+```bash
+cd ~/.vim
+git submodule update --init
+```
 
 ### Install plugins as needed
-
-    cd ~/.vim
-    # Don't forget to add the path at the end of this command to ensure
-    # that it ends up in the `bundle` dir.
-    git submodule add https://example.com/repo.vim bundle/repo
+```bash
+cd ~/.vim
+# Don't forget to add the path at the end of this command to ensure
+# that it ends up in the `bundle` dir.
+git submodule add https://example.com/repo.vim bundle/repo
+```
 
 ### Update as needed
-
-    cd ~/.vim
-    git submodule foreach git pull origin master
-
+```bash
+cd ~/.vim
+git submodule foreach git pull origin master
+  ```
