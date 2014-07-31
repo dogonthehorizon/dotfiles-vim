@@ -10,7 +10,7 @@ Questions and concerns can be directed [here](https://github.com/dogonthehorizon
 Requirements:
 -------------
 
-* This repository requires `Vim >= 7.3.885` along with the following features
+* This repository requires `Vim >= 7.3.885` or greater along with the following features
     * `+lua`
 
 * Recommended, but not necessary, are the following enhancements
@@ -30,6 +30,13 @@ Installation:
 
     cd ~/.vim
     git submodule update --init
+
+### Install plugins as needed
+
+    cd ~/.vim
+    # Don't forget to add the path at the end of this command to ensure
+    # that it ends up in the `bundle` dir.
+    git submodule add https://example.com/repo.vim bundle/repo
 
 ### Update as needed
 
