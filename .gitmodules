@@ -127,3 +127,6 @@
 [submodule "bundle/play2vim"]
 	path = bundle/play2vim
 	url = https://github.com/gre/play2vim.git
+[submodule "bundle/mustache"]
+	path = bundle/mustache
+	url = https://github.com/mustache/vim-mustache-handlebars.git
