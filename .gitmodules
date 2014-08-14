@@ -103,12 +103,6 @@
 [submodule "bundle/vim-classpath"]
 	path = bundle/vim-classpath
 	url = https://github.com/tpope/vim-classpath.git
-[submodule "bundle/vim-leiningen"]
-	path = bundle/vim-leiningen
-	url = https://github.com/tpope/vim-leiningen.git
-[submodule "bundle/vim-projectionist"]
-	path = bundle/vim-projectionist
-	url = https://github.com/tpope/vim-projectionist.git
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
