@@ -1,6 +1,3 @@
-[submodule "bundle/HTML-AutoCloseTag"]
-	path = bundle/HTML-AutoCloseTag
-	url = https://github.com/vim-scripts/HTML-AutoCloseTag.git
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
