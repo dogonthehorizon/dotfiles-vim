@@ -11,7 +11,7 @@ scriptencoding utf-8
 let mapleader = ","
 
 set background=dark
-colorscheme base16-eighties
+colorscheme base16-default
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
@@ -54,6 +54,7 @@ set undoreload=10000"
 set tabpagemax=5
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
+set clipboard=unnamed           " OSX clipboard access.
 
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
