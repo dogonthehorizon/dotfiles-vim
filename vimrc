@@ -11,7 +11,7 @@ scriptencoding utf-8
 let mapleader = ","
 
 set background=dark
-colorscheme base16-default
+colorscheme base16-google
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
