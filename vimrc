@@ -33,6 +33,8 @@ let g:airline_powerline_fonts=1
 
 " vim-bufferline config
 let g:bufferline_echo=0
+let g:bufferline_active_buffer_left='['
+let g:bufferline_active_buffer_right=']'
 autocmd VimEnter *
   \ let &statusline='%{bufferline#refresh_status()}'
     \ .bufferline#get_status_string()
@@ -62,9 +64,9 @@ set nu                          " Line numbers on
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms
-set winminheight=0              " Windows can be 0 line high
 set ignorecase                  " Case insensitive search
 set smartcase                   " Case sensitive when uc present
+set winminheight=0              " Windows can be 0 line high
 set wildmenu                    " Show list instead of just completing
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
@@ -72,8 +74,7 @@ set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
-" Highlight problematic whitespace
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set nowrap                        " Line wrapping
 
 set autoindent                  " Indent at the same level of the previous line
@@ -94,6 +95,13 @@ let NERDTreeWinSize=40
 let b:match_ignorecase = 1
 " Open a new NERDTree buffer with C-n
 map <C-n> :NERDTreeToggle<CR>
+
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
@@ -121,12 +129,6 @@ nnoremap Y y$
 " For when you forget to sudo.. Really write the file.
 cmap w!! w !sudo tee % >/dev/null
 
-" Adjust viewports to the same size
-map <Leader>= <C-w>=
-
-" Search for the keyword under cursor and ask which definition to jump to
-nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
 set tags=./tags;/,~/.vimtags
 
 if has("autocmd") && exists("+omnifunc")
@@ -136,31 +138,16 @@ if has("autocmd") && exists("+omnifunc")
         \endif
 endif
 
-hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
+"todo: figure out wtf this is for.
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menu,preview,longest
 
-" Make it so AutoCloseTag works for xml and xhtml files as well"
-au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-nmap <Leader>ac <Plug>ToggleAutoCloseMappings
 
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeChDirMode=0
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-
-" Session list
-set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-nmap <leader>sl :SessionList<CR>
-nmap <leader>ss :SessionSave<CR>
-
-""" ctrlp
+""" Ctrl-P
+hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
@@ -186,7 +173,6 @@ nnoremap <silent> <leader>gp :Git push<CR>
 
 """ neocomplete
 let g:acp_enableAtStartup = 0 " Disable AutoComplPop
-
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -194,22 +180,15 @@ let g:neocomplete#lock_buffer_name_patter = '\*ku\*'
 
 let g:neocomplete#force_overwrite_completefunc=1
 
-let g:neocomplete#enable_auto_select = 1 " AutoComplPop like behavior.
-
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default'     : '',
     \ 'vimshell'    : $HOME.'/.vimshell_hist',
-    \ 'scheme'      : $HOME.'/.gosh_completions'
     \ }
 
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin Keymappings
-inoremap <expr><C-g> neocomplete#undo_completion() 
-inoremap <expr><C-l> neocomplete#complete_common_string() 
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -225,6 +204,7 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
+inoremap <expr><Space> neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -255,6 +235,9 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+""" vim-javascript-syntax
+au FileType javascript call JavaScriptFold()
 
 """ Functions
 function! InitializeDirectories()

@@ -43,9 +43,6 @@
 [submodule "bundle/vim-jade"]
 	path = bundle/vim-jade
 	url = https://github.com/digitaltoad/vim-jade.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "bundle/vim-json"]
 	path = bundle/vim-json
 	url = https://github.com/leshill/vim-json.git
@@ -121,3 +118,9 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/vim-javascript-syntax"]
+	path = bundle/vim-javascript-syntax
+	url = https://github.com/jelera/vim-javascript-syntax.git
+[submodule "bundle/vim-velocity"]
+	path = bundle/vim-velocity
+	url = https://github.com/lepture/vim-velocity.git
