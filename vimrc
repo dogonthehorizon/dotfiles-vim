@@ -34,7 +34,7 @@ let g:airline_powerline_fonts=1
 set encoding=utf-8
 set t_Co=256
 
-set shortmess+=filmnrxoOtT                      " Abbrev. of messages (avoids 'hit enter')"
+set shortmess+=mnrxoOtT                         " Abbrev. of messages (avoids 'hit enter')"
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore                         " Allow for cursor beyond last character
 set history=1000                                " Store a ton of history (default is 20)"
