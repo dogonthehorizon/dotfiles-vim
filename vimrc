@@ -93,7 +93,6 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
 " Automatically wrap j and k to the next/prev line
@@ -111,6 +110,7 @@ if has("user_commands")
     command! -bang Q   q<bang>
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
+    command! -bang Tabn tabn<bang>
 endif
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -127,12 +127,6 @@ if has("autocmd") && exists("+omnifunc")
         \setlocal omnifunc=syntaxcomplete#Complete |
         \endif
 endif
-
-"todo: figure out wtf this is for.
-" Automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menu,preview,longest
-
 
 """ Ctrl-P
 hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
@@ -225,9 +219,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
-""" vim-javascript-syntax
-au FileType javascript call JavaScriptFold()
 
 """ Functions
 function! InitializeDirectories()
