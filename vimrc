@@ -31,15 +31,6 @@ let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
-" vim-bufferline config
-let g:bufferline_echo=0
-let g:bufferline_active_buffer_left='['
-let g:bufferline_active_buffer_right=']'
-autocmd VimEnter *
-  \ let &statusline='%{bufferline#refresh_status()}'
-    \ .bufferline#get_status_string()
-" end vim-bufferline config
-
 set encoding=utf-8
 set t_Co=256
 
