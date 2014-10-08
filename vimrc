@@ -10,6 +10,7 @@ scriptencoding utf-8
 
 let mapleader = ","
 
+set t_Co=256 "256 color support
 set background=dark
 colorscheme base16-google
 
@@ -32,7 +33,6 @@ let g:airline_powerline_fonts=1
 " end vim-airline config
 
 set encoding=utf-8
-set t_Co=256
 
 set shortmess+=mnrxoOtT                         " Abbrev. of messages (avoids 'hit enter')"
 set virtualedit=onemore                         " Allow for cursor beyond last character
