@@ -4,9 +4,6 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T.git
-[submodule "bundle/csapprox"]
-	path = bundle/csapprox
-	url = https://github.com/godlygeek/csapprox.git
 [submodule "bundle/gist-vim"]
 	path = bundle/gist-vim
 	url = https://github.com/mattn/gist-vim.git
@@ -124,6 +121,9 @@
 [submodule "bundle/vim-slamhound"]
 	path = bundle/vim-slamhound
 	url = https://github.com/guns/vim-slamhound.git
-[submodule "bundle/colorsupport.vim"]
-	path = bundle/colorsupport.vim
-	url = https://github.com/vim-scripts/colorsupport.vim.git
+[submodule "guicolorscheme.vim"]
+	path = guicolorscheme.vim
+	url = https://github.com/vim-scripts/guicolorscheme.vim.git
+[submodule "bundle/guicolorscheme.vim.git"]
+	path = bundle/guicolorscheme.vim.git
+	url = https://github.com/vim-scripts/guicolorscheme.vim.git
