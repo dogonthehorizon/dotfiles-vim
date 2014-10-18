@@ -127,3 +127,9 @@
 [submodule "bundle/csapprox"]
 	path = bundle/csapprox
 	url = https://github.com/godlygeek/csapprox.git
+[submodule "bundle/colorsupport.vim"]
+	path = bundle/colorsupport.vim
+	url = https://github.com/vim-scripts/colorsupport.vim.git
+[submodule "bundle/play2vim"]
+	path = bundle/play2vim
+	url = https://github.com/gre/play2vim.git
