@@ -12,7 +12,7 @@ let mapleader = ","
 
 set t_Co=256 "256 color support
 set background=dark
-colorscheme base16-google
+colorscheme base16-tomorrow
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
@@ -28,7 +28,7 @@ set ruler
 
 " vim-airline config
 set laststatus=2
-let g:airline_theme='base16'
+let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
