@@ -4,9 +4,6 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T.git
-[submodule "bundle/gist-vim"]
-	path = bundle/gist-vim
-	url = https://github.com/mattn/gist-vim.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -49,9 +46,6 @@
 [submodule "bundle/vim-perl"]
 	path = bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl.git
-[submodule "bundle/vim-php-namespace"]
-	path = bundle/vim-php-namespace
-	url = https://github.com/arnaud-lb/vim-php-namespace.git
 [submodule "bundle/vim-stylus"]
 	path = bundle/vim-stylus
 	url = https://github.com/wavded/vim-stylus.git
@@ -76,9 +70,6 @@
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/vim-colors"]
-	path = bundle/vim-colors
-	url = https://github.com/spf13/vim-colors
 [submodule "bundle/vim-clojure-static"]
 	path = bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
@@ -91,9 +82,6 @@
 [submodule "bundle/vim-clojure-highlight"]
 	path = bundle/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
-[submodule "bundle/vim-classpath"]
-	path = bundle/vim-classpath
-	url = https://github.com/tpope/vim-classpath.git
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
@@ -115,9 +103,6 @@
 [submodule "bundle/vim-javascript-syntax"]
 	path = bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
-[submodule "bundle/vim-velocity"]
-	path = bundle/vim-velocity
-	url = https://github.com/lepture/vim-velocity.git
 [submodule "bundle/vim-slamhound"]
 	path = bundle/vim-slamhound
 	url = https://github.com/guns/vim-slamhound.git
