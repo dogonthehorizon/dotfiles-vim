@@ -32,8 +32,6 @@ let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
-set encoding=utf-8
-
 set shortmess+=mnrxoOtT                         " Abbrev. of messages (avoids 'hit enter')"
 set virtualedit=onemore                         " Allow for cursor beyond last character
 set history=1000                                " Store a ton of history (default is 20)"
