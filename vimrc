@@ -1,5 +1,3 @@
-set nocompatible
-
 let g:pathogen_disabled = []
 
 execute pathogen#infect()
