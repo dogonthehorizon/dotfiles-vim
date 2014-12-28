@@ -4,6 +4,8 @@ execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
+
+set encoding=utf-8
 scriptencoding utf-8
 
 let mapleader = ","
