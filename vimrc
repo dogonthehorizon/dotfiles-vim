@@ -41,14 +41,13 @@ set undofile " persistent undo
 set undolevels=1000
 set undoreload=10000"
 
-set tabpagemax=5
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 set clipboard=unnamed           " OSX clipboard access.
 
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
-set nu                          " Line numbers on
+set number                      " Line numbers on
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms
@@ -85,7 +84,7 @@ let b:match_ignorecase = 1
 map <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
