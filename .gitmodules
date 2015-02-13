@@ -133,3 +133,12 @@
 [submodule "bundle/vimux"]
 	path = bundle/vimux
 	url = https://github.com/benmills/vimux.git
+[submodule "bundle/dash.vim"]
+	path = bundle/dash.vim
+	url = https://github.com/rizzatti/dash.vim.git
+[submodule "bundle/underscore-templates.vim"]
+	path = bundle/underscore-templates.vim
+	url = https://github.com/aaronj1335/underscore-templates.vim.git
+[submodule "bundle/tabular.git"]
+	path = bundle/tabular.vim
+	url = https://github.com/godlygeek/tabular.git
