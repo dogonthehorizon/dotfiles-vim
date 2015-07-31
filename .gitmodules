@@ -130,3 +130,6 @@
 [submodule "bundle/underscore-templates.vim"]
 	path = bundle/underscore-templates.vim
 	url = https://github.com/aaronj1335/underscore-templates.vim.git
+[submodule "bundle/tmux.vim"]
+	path = bundle/tmux.vim
+	url = https://github.com/keith/tmux.vim.git
