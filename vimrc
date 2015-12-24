@@ -1,4 +1,4 @@
-let g:pathogen_disabled = []
+let g:pathogen_disabled = ["neocomplete.vim"]
 
 execute pathogen#infect()
 
