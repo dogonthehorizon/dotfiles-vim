@@ -133,3 +133,6 @@
 [submodule "bundle/tmux.vim"]
 	path = bundle/tmux.vim
 	url = https://github.com/keith/tmux.vim.git
+[submodule "bundle/vim-airline-theme"]
+	path = bundle/vim-airline-theme
+	url = https://github.com/vim-airline/vim-airline-themes.git
