@@ -1,4 +1,4 @@
-let g:pathogen_disabled = ["neocomplete.vim"]
+let g:pathogen_disabled = []
 
 execute pathogen#infect()
 
@@ -32,12 +32,12 @@ let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
-set shortmess+=mnrxoOtT                         " Abbrev. of messages (avoids 'hit enter')"
-set virtualedit=onemore                         " Allow for cursor beyond last character
-set history=1000                                " Store a ton of history (default is 20)"
+set shortmess+=mnrxoOtT     " Abbrev. of messages (avoids 'hit enter')"
+set virtualedit=onemore     " Allow for cursor beyond last character
+set history=1000            " Store a ton of history (default is 20)"
 
-set backup "allow backups
-set undofile " persistent undo
+set backup                  "allow backups
+set undofile                "persistent undo
 set undolevels=1000
 set undoreload=10000"
 
@@ -65,32 +65,10 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 set nowrap                        " Line wrapping
 
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=4                " Use indents of 4 spaces
+set shiftwidth=2                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent"
-
-" Start NERDTree at startup and switch focus to the actual window
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd w
-" Close NERDTree with q instead of qall
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDShutUp=1
-let NERDTreeShowLineNumbers=0
-let NERDTreeMinimalUI=1
-let NERDTreeWinSize=40
-let b:match_ignorecase = 1
-" Open a new NERDTree buffer with C-n
-map <C-n> :NERDTreeToggle<CR>
-
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr']
-let NERDTreeChDirMode=0
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-
-autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent"
 
 " Automatically wrap j and k to the next/prev line
 nnoremap j gj
@@ -244,10 +222,6 @@ function! InitializeDirectories()
 endfunction
 
 call InitializeDirectories()
-
-""" OCaml Merlin
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " XML formatter
 function! DoFormatXML() range
