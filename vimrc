@@ -12,7 +12,7 @@ let mapleader = ","
 
 set t_Co=256 "256 color support
 set background=dark
-colorscheme jellybeans
+colorscheme wwdc16
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
@@ -63,6 +63,7 @@ set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set nowrap                        " Line wrapping
+set colorcolumn=80              " Set a visual column marker at 80 chars
 
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=2                " Use indents of 4 spaces
