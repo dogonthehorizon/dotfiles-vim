@@ -82,3 +82,15 @@
 [submodule "bundle/vim-airline-theme"]
 	path = bundle/vim-airline-theme
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "bundle/vim-material-theme"]
+	path = bundle/vim-material-theme
+	url = https://github.com/jdkanani/vim-material-theme
+[submodule "bundle/haskell-vim"]
+	path = bundle/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "bundle/vim-wwdc16-theme"]
+	path = bundle/vim-wwdc16-theme
+	url = https://github.com/lifepillar/vim-wwdc16-theme.git
+[submodule "bundle/vim-instant-markdown"]
+	path = bundle/vim-instant-markdown
+	url = https://github.com/suan/vim-instant-markdown.git
