@@ -7,8 +7,7 @@ If you have any questions or issues please file a ticket [here][repo-issues].
 
 ### Requirements
 
-  * This repository requires `Vim >= 7.3.885` or greater along with the
-  following features
+  * `Vim >= 7.3.885` or greater along with the following features:
     * `+lua`
   * The vim-instant-markdown node plugin installed
     * `npm install -g instant-markdown-d`
