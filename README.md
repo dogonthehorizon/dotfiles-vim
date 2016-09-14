@@ -1,49 +1,66 @@
-dotfiles-vim ![Generic](http://img.shields.io/status/active.png?color=green)
-------------
+# dotfiles-vim ![Generic](https://img.shields.io/badge/status-active-green.svg)
 
-This repo is one configuration (of many) for [g|m]vim. Use them at your own risk.
+This repo contains my personal vim and gvim configurations. They are provided
+as is!
 
-Eventually this repo will become a submodule of a more general `dotfiles` repo, coming Soon(tm).
+If you have any questions or issues please file a ticket [here][repo-issues].
 
-Questions and concerns can be directed [here](https://github.com/dogonthehorizon/dotfiles-vim/issues).
+### Requirements
 
-Requirements:
--------------
-
-* This repository requires `Vim >= 7.3.885` or greater along with the following features
+  * `Vim >= 7.3.885` or greater along with the following features:
     * `+lua`
+  * The vim-instant-markdown node plugin installed
+    * `npm install -g instant-markdown-d`
+  * Recommended, but not necessary, are the following enhancements
+    * A patched font for vim-airline (Lokaltog's [powerline-fonts][fonts]
+    do the trick).
 
-* Recommended, but not necessary, are the following enhancements
-    * A patched font for vim-airline (Lokaltog's [powerline-fonts](https://github.com/Lokaltog/powerline-fonts) work here as well).
+### Installation
 
-Installation:
--------------
-```bash
+#### Quick Start
+
+If you're impatient, and you trust me, you can run this setup script. Note that
+this will move whatever you already have in `.vim` into `.vim-backup`.
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/dogonthehorizon/dotfiles-vim/master/init.sh)"
+```
+
+#### Manual Installation
+
+If you'd like to take things at your own pace, the following commands be run
+individually to get you all set up.
+
+```
+# Clone the repo to your ~/.vim directory
 git clone https://github.com/dogonthehorizon/dotfiles-vim.git ~/.vim
+
+# Create symlinks for your vim and gvim configs
+ln -s ~/.vim/vimrc ~/.vimrc && ln -s ~/.vim/gvimrc ~/.gvimrc
+
+# Switch into `~/.vim` and initialize submodules
+cd ~/.vim && git submodule update --init
 ```
 
-### Create symlinks:
-```bash
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
-```
+### Adding new plugins
 
-### Switch to the `~/.vim` directory, and fetch submodules:
-```bash
-cd ~/.vim
-git submodule update --init
 ```
-
-### Install plugins as needed
-```bash
 cd ~/.vim
 # Don't forget to add the path at the end of this command to ensure
 # that it ends up in the `bundle` dir.
 git submodule add https://example.com/repo.vim bundle/repo
+
+# In order to sync between all machines you will need to run this on each
+# other machine from the one that added the plugin.
+cd ~/.vim && git submodule update --init
 ```
 
-### Update as needed
-```bash
+### Updating plugins
+
+```
 cd ~/.vim
 git submodule foreach git pull origin master
-  ```
+```
+
+[repo-issues]: https://github.com/dogonthehorizon/dotfiles-vim/issues
+[fonts]: https://github.com/Lokaltog/powerline-fonts
