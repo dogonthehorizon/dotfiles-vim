@@ -8,7 +8,9 @@ syntax on
 set encoding=utf-8
 scriptencoding utf-8
 
+" Change the leader but retain the ability to backwards char search
 let mapleader = ","
+noremap \ ,
 
 set t_Co=256 "256 color support
 set background=dark
