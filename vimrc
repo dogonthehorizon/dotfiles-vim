@@ -5,9 +5,6 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
-set encoding=utf-8
-scriptencoding utf-8
-
 " Change the leader but retain the ability to backwards char search
 let mapleader = ","
 noremap \ ,
@@ -25,8 +22,6 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
 " Remove the ugly pipe separator for windows
 set fillchars+=vert:\ 
-
-
 
 " vim-airline config
 set laststatus=2
@@ -114,13 +109,15 @@ hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=da
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+  \ 'dir': '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 let g:ctrlp_user_command = {
     \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+        \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
         \ 2: ['.hg', 'hg --cwd %s locate -I .'],
     \ },
     \ 'fallback': 'find %s -type f'
@@ -147,11 +144,6 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default'     : '',
     \ 'vimshell'    : $HOME.'/.vimshell_hist',
     \ }
-
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
