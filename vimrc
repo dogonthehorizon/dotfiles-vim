@@ -14,7 +14,7 @@ noremap \ ,
 
 set t_Co=256 "256 color support
 set background=dark
-colorscheme wwdc16
+colorscheme jellybeans
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
@@ -26,7 +26,7 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 " Remove the ugly pipe separator for windows
 set fillchars+=vert:\ 
 
-set ruler
+
 
 " vim-airline config
 set laststatus=2
@@ -34,44 +34,45 @@ let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
-set shortmess+=mnrxoOtT     " Abbrev. of messages (avoids 'hit enter')"
-set virtualedit=onemore     " Allow for cursor beyond last character
-set history=1000            " Store a ton of history (default is 20)"
+set shortmess+=mnrxoOtT                        " Abbrev. of messages (avoids 'hit enter')
+set virtualedit=onemore                        " Allow for cursor beyond last character
+set history=1000                               " Store a ton of history (default is 20)
 
-set backup                  "allow backups
-set undofile                "persistent undo
+set backup                                     " allow backups
+set undofile                                   " persistent undo
 set undolevels=1000
-set undoreload=10000"
+set undoreload=10000
 
-set showmode                    " Display the current mode
-set cursorline                  " Highlight current line
-set clipboard=unnamed           " OSX clipboard access.
+set showmode                                   " Display the current mode
+set cursorline                                 " Highlight current line
+set clipboard=unnamed                          " OSX clipboard access.
 
-set backspace=indent,eol,start  " Backspace for dummies
-set linespace=0                 " No extra spaces between rows
-set number                      " Line numbers on
-set showmatch                   " Show matching brackets/parenthesis
-set incsearch                   " Find as you type search
-set hlsearch                    " Highlight search terms
-set ignorecase                  " Case insensitive search
-set smartcase                   " Case sensitive when uc present
-set winminheight=0              " Windows can be 0 line high
-set wildmenu                    " Show list instead of just completing
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=3                 " Minimum lines to keep above and below cursor
-set foldenable                  " Auto fold code
+set ruler                                      " Display file information in the status bar
+set backspace=indent,eol,start                 " Backspace for dummies
+set linespace=0                                " No extra spaces between rows
+set number                                     " Line numbers on
+set showmatch                                  " Show matching brackets/parenthesis
+set incsearch                                  " Find as you type search
+set hlsearch                                   " Highlight search terms
+set ignorecase                                 " Case insensitive search
+set smartcase                                  " Case sensitive when uc present
+set winminheight=0                             " Windows can be 0 line high
+set wildmenu                                   " Show list instead of just completing
+set wildmode=list:longest,full                 " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]                  " Backspace and cursor keys wrap too
+set scrolljump=5                               " Lines to scroll when cursor leaves screen
+set scrolloff=3                                " Minimum lines to keep above and below cursor
+set foldenable                                 " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-set nowrap                        " Line wrapping
-set colorcolumn=80              " Set a visual column marker at 80 chars
+set nowrap                                     " Disable line wrapping by default
+set colorcolumn=80                             " Set a visual column marker at 80 chars
 
-set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=2                " Use indents of 4 spaces
-set expandtab                   " Tabs are spaces, not tabs
-set tabstop=2                   " An indentation every four columns
-set softtabstop=2               " Let backspace delete indent"
+set autoindent                                 " Indent at the same level of the previous line
+set shiftwidth=2                               " Use indents of 2 spaces
+set expandtab                                  " Tabs are spaces, not tabs
+set tabstop=2                                  " An indentation every two columns
+set softtabstop=2                              " Let backspace delete indent
 
 " Automatically wrap j and k to the next/prev line
 nnoremap j gj
