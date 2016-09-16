@@ -52,33 +52,18 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule "bundle/vim-scala"]
-	path = bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
-[submodule "bundle/base16"]
-	path = bundle/base16
-	url = https://github.com/chriskempson/base16-vim.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
 [submodule "guicolorscheme.vim"]
 	path = guicolorscheme.vim
 	url = https://github.com/vim-scripts/guicolorscheme.vim.git
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
 [submodule "bundle/vim-sexp"]
 	path = bundle/vim-sexp
 	url = https://github.com/guns/vim-sexp.git
 [submodule "bundle/jellybeans"]
 	path = bundle/jellybeans
 	url = https://github.com/nanotech/jellybeans.vim
-[submodule "bundle/vimux"]
-	path = bundle/vimux
-	url = https://github.com/benmills/vimux.git
-[submodule "bundle/tmux.vim"]
-	path = bundle/tmux.vim
-	url = https://github.com/keith/tmux.vim.git
 [submodule "bundle/vim-airline-theme"]
 	path = bundle/vim-airline-theme
 	url = https://github.com/vim-airline/vim-airline-themes.git
