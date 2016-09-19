@@ -17,3 +17,5 @@ git clone https://github.com/dogonthehorizon/dotfiles-vim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc && ln -s ~/.vim/gvimrc ~/.gvimrc
 
 cd ~/.vim && git submodule update --init
+
+cd ~/.vim/bundle/vimproc && make

@@ -42,6 +42,9 @@ ln -s ~/.vim/vimrc ~/.vimrc && ln -s ~/.vim/gvimrc ~/.gvimrc
 
 # Switch into `~/.vim` and initialize submodules
 cd ~/.vim && git submodule update --init
+
+# Build the vimproc binary
+cd ~/.vim/bundle/vimproc && make
 ```
 
 ### Adding new plugins
