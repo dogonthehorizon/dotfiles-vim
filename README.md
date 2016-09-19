@@ -11,6 +11,8 @@ If you have any questions or issues please file a ticket [here][repo-issues].
     * `+lua`
   * The vim-instant-markdown node plugin installed
     * `npm install -g instant-markdown-d`
+  * ghc-mod and hlint for Haskell development
+    * `stack install hlint ghcmod`
   * Recommended, but not necessary, are the following enhancements
     * A patched font for vim-airline (Lokaltog's [powerline-fonts][fonts]
     do the trick).
