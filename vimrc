@@ -23,6 +23,9 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 " Remove the ugly pipe separator for windows
 set fillchars+=vert:\ 
 
+" Enhance the functionality of '%'
+runtime macros/matchit.vim
+
 " vim-airline config
 set laststatus=2
 let g:airline_theme='jellybeans'
@@ -111,8 +114,8 @@ nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'dir': '\v[\/]\.(git|hg|svn|gradle)$',
+  \ 'file': '\v\.(exe|so|dll|bin)$',
   \ }
 
 let g:ctrlp_user_command = {
