@@ -287,3 +287,6 @@ command! -range=% FormatXML <line1>,<line2>call DoFormatXML()
 
 nmap <silent> <leader>x :%FormatXML<CR>
 vmap <silent> <leader>x :FormatXML<CR>
+
+" Maps Coquille commands to <F2> (Undo), <F3> (Next), <F4> (ToCursor)
+au FileType coq call coquille#FNMapping()
