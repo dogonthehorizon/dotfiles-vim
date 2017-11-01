@@ -1,13 +1,53 @@
 filetype plugin indent on
 syntax on
 
+set packpath^=~/.vim
+packadd minpac
+
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+""" Language Specific Plugins
+" Coq
+call minpac#add('the-lambda-church/coquille')
+" Haskell
+call minpac#add('eagletmt/ghcmod-vim')
+call minpac#add('eagletmt/neco-ghc')
+call minpac#add('neovimhaskell/haskell-vim')
+
+""" Themes
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('altercation/vim-colors-solarized')
+
+""" Utilities
+call minpac#add('ctrlpvim/ctrlp.vim')
+call minpac#add('Shougo/neocomplete.vim')
+call minpac#add('scrooloose/nerdcommenter')
+call minpac#add('myusuf3/numbers.vim')
+call minpac#add('kien/rainbow_parentheses.vim')
+call minpac#add('vim-scripts/restore_view.vim')
+call minpac#add('godlygeek/tabular')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('Townk/vim-autoclose')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('airblade/vim-gitgutter')
+call minpac#add('nathanaelkane/vim-indent-guides')
+call minpac#add('suan/vim-instant-markdown')
+call minpac#add('dbakker/vim-lint')
+call minpac#add('guns/vim-sexp')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-vinegar')
+
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+
 " Change the leader but retain the ability to backwards char search
 let mapleader = ","
 noremap \ ,
 
 set t_Co=256 "256 color support
-set background=dark
-colorscheme jellybeans
+set background=light
+colorscheme solarized
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
