@@ -1,7 +1,3 @@
-let g:pathogen_disabled = []
-
-execute pathogen#infect()
-
 filetype plugin indent on
 syntax on
 

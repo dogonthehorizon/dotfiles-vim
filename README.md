@@ -7,7 +7,7 @@ If you have any questions or issues please file a ticket [here][repo-issues].
 
 ### Requirements
 
-  * `Vim >= 7.3.885` or greater along with the following features:
+  * `Vim >= 8.0` or greater along with the following features:
     * `+lua`
   * The vim-instant-markdown node plugin installed
     * `npm install -g instant-markdown-d`
@@ -44,7 +44,7 @@ ln -s ~/.vim/vimrc ~/.vimrc && ln -s ~/.vim/gvimrc ~/.gvimrc
 cd ~/.vim && git submodule update --init
 
 # Build the vimproc binary
-cd ~/.vim/bundle/vimproc && make
+cd ~/.vim/pack/bundle/start/vimproc && make
 ```
 
 ### Adding new plugins
@@ -52,8 +52,8 @@ cd ~/.vim/bundle/vimproc && make
 ```
 cd ~/.vim
 # Don't forget to add the path at the end of this command to ensure
-# that it ends up in the `bundle` dir.
-git submodule add https://example.com/repo.vim bundle/repo
+# that it ends up in the `pack/bundle/start` dir.
+git submodule add https://example.com/repo.vim pack/bundle/start/repo
 
 # In order to sync between all machines you will need to run this on each
 # other machine from the one that added the plugin.
