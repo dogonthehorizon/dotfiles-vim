@@ -40,6 +40,7 @@ call minpac#add('dbakker/vim-lint')
 call minpac#add('guns/vim-sexp')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-vinegar')
+call minpac#add('tpope/vim-obsession')
 
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
@@ -67,7 +68,7 @@ runtime macros/matchit.vim
 
 " vim-airline config
 set laststatus=2
-let g:airline_theme='jellybeans'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
 " end vim-airline config
 
