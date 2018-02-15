@@ -11,6 +11,8 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 " Coq
 call minpac#add('the-lambda-church/coquille')
 " Haskell
+" vvv Required by ghcmod-vim
+call minpac#add('Shougo/vimproc.vim')
 call minpac#add('eagletmt/ghcmod-vim')
 call minpac#add('eagletmt/neco-ghc')
 call minpac#add('neovimhaskell/haskell-vim')
@@ -20,6 +22,7 @@ call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('altercation/vim-colors-solarized')
 
 """ Utilities
+call minpac#add('w0rp/ale')
 call minpac#add('ctrlpvim/ctrlp.vim')
 call minpac#add('Shougo/neocomplete.vim')
 call minpac#add('scrooloose/nerdcommenter')
@@ -211,6 +214,12 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Haskell specific completions
 let g:necoghc_enable_detailed_browse = 1
+
+" ale
+" Ensure that Ale uses Stack to properly configure project deps when linting.
+let g:ale_linters = {
+\  'haskell': ['stack_build', 'stack_ghc'],
+\}
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
