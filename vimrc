@@ -21,10 +21,15 @@ call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('altercation/vim-colors-solarized')
 
+""" Completion plugins
+call minpac#add('Shougo/deoplete.nvim')
+" Required by deoplete
+call minpac#add('roxma/nvim-yarp')
+call minpac#add('roxma/vim-hug-neovim-rpc')
+
 """ Utilities
 call minpac#add('w0rp/ale')
 call minpac#add('ctrlpvim/ctrlp.vim')
-call minpac#add('Shougo/neocomplete.vim')
 call minpac#add('scrooloose/nerdcommenter')
 call minpac#add('myusuf3/numbers.vim')
 call minpac#add('kien/rainbow_parentheses.vim')
@@ -111,6 +116,7 @@ set shiftwidth=2                               " Use indents of 2 spaces
 set expandtab                                  " Tabs are spaces, not tabs
 set tabstop=2                                  " An indentation every two columns
 set softtabstop=2                              " Let backspace delete indent
+set encoding=utf-8                             " UTF-8 by default
 
 " Automatically wrap j and k to the next/prev line
 nnoremap j gj
@@ -174,23 +180,23 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
-""" neocomplete
+"""" neocomplete
+let g:deoplete#enable_at_startup = 1
 let g:acp_enableAtStartup = 0 " Disable AutoComplPop
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_patter = '\*ku\*'
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#syntax#min_keyword_length = 3
+let g:deoplete#lock_buffer_name_patter = '\*ku\*'
 
-let g:neocomplete#force_overwrite_completefunc=1
+let g:deoplete#force_overwrite_completefunc=1
 
-let g:neocomplete#sources#dictionary#dictionaries = {
+let g:deoplete#sources#dictionary#dictionaries = {
     \ 'default'     : '',
     \ 'vimshell'    : $HOME.'/.vimshell_hist',
     \ }
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    return pumvisible() ? deoplete#close_popup() : "\<CR>"
 endfunction
 
 " <TAB>: completion.
@@ -198,11 +204,11 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>""
 
 " <C-h>, <BS>: close popup and delete backword char
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-inoremap <expr><Space> neocomplete#cancel_popup()
+inoremap <expr><C-h> deoplete()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  deoplete#close_popup()
+inoremap <expr><C-e>  deoplete#cancel_popup()
+inoremap <expr><Space> deoplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -215,6 +221,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Haskell specific completions
 let g:necoghc_enable_detailed_browse = 1
+let g:haskellmode_completion_ghc = 0
 
 " ale
 " Ensure that Ale uses Stack to properly configure project deps when linting.

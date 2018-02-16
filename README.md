@@ -8,11 +8,14 @@ If you have any questions or issues please file a ticket [here][repo-issues].
 ### Requirements
 
   * `Vim >= 8.0` or greater along with the following features:
-    * `+lua`
+      * `+lua`
+      * `+python3`
   * The vim-instant-markdown node plugin installed
-    * `npm install -g instant-markdown-d`
+      * `npm install -g instant-markdown-d`
   * ghc-mod and hlint for Haskell development
-    * `stack install hlint ghcmod`
+      * `stack install hlint ghcmod`
+  * Neovim Python plugin
+      * `pip3 install neovim`
   * Recommended, but not necessary, are the following enhancements
     * A patched font for vim-airline (Lokaltog's [powerline-fonts][fonts]
     do the trick).
