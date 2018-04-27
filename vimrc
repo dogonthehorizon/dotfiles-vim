@@ -17,6 +17,9 @@ call minpac#add('eagletmt/ghcmod-vim')
 call minpac#add('eagletmt/neco-ghc')
 call minpac#add('neovimhaskell/haskell-vim')
 
+"Elm
+call minpac#add('ElmCast/elm-vim')
+
 """ Themes
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('altercation/vim-colors-solarized')
