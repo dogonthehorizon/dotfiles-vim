@@ -230,7 +230,16 @@ let g:haskellmode_completion_ghc = 0
 " Ensure that Ale uses Stack to properly configure project deps when linting.
 let g:ale_linters = {
 \  'haskell': ['stack_build', 'stack_ghc'],
+\  'python':  ['pylint']
 \}
+
+let g:ale_fixers = {
+\  'python': ['isort', 'yapf'],
+\  'go': ['goimports']
+\}
+
+" Fix files automatically on save.
+let g:ale_fix_on_save = 1
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
