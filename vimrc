@@ -20,6 +20,9 @@ call minpac#add('neovimhaskell/haskell-vim')
 "Elm
 call minpac#add('ElmCast/elm-vim')
 
+"Fish
+call minpac#add('dag/vim-fish')
+
 """ Themes
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('altercation/vim-colors-solarized')
@@ -43,15 +46,16 @@ call minpac#add('Townk/vim-autoclose')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('nathanaelkane/vim-indent-guides')
-call minpac#add('suan/vim-instant-markdown')
+" call minpac#add('suan/vim-instant-markdown')
 call minpac#add('dbakker/vim-lint')
 call minpac#add('guns/vim-sexp')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-vinegar')
 call minpac#add('tpope/vim-obsession')
 
-command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
 " Change the leader but retain the ability to backwards char search
 let mapleader = ","
@@ -91,7 +95,7 @@ set undoreload=10000
 
 set showmode                                   " Display the current mode
 set cursorline                                 " Highlight current line
-set clipboard=unnamed                          " OSX clipboard access.
+set clipboard=unnamedplus                          " OSX clipboard access.
 
 set ruler                                      " Display file information in the status bar
 set backspace=indent,eol,start                 " Backspace for dummies
@@ -110,7 +114,7 @@ set scrolljump=5                               " Lines to scroll when cursor lea
 set scrolloff=3                                " Minimum lines to keep above and below cursor
 set foldenable                                 " Auto fold code
 set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set listchars="tab:›\ ,trail:•,extends:#,nbsp:." " Highlight problematic whitespace
 set nowrap                                     " Disable line wrapping by default
 set colorcolumn=80                             " Set a visual column marker at 80 chars
 
