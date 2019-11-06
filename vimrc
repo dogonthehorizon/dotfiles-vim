@@ -11,10 +11,6 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 " Coq
 call minpac#add('the-lambda-church/coquille')
 " Haskell
-" vvv Required by ghcmod-vim
-call minpac#add('Shougo/vimproc.vim')
-call minpac#add('eagletmt/ghcmod-vim')
-call minpac#add('eagletmt/neco-ghc')
 call minpac#add('neovimhaskell/haskell-vim')
 
 "Elm
@@ -28,10 +24,7 @@ call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('altercation/vim-colors-solarized')
 
 """ Completion plugins
-call minpac#add('Shougo/deoplete.nvim')
-" Required by deoplete
-call minpac#add('roxma/nvim-yarp')
-call minpac#add('roxma/vim-hug-neovim-rpc')
+call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install() }})
 
 """ Utilities
 call minpac#add('w0rp/ale')
@@ -64,6 +57,12 @@ noremap \ ,
 set t_Co=256 "256 color support
 set background=light
 colorscheme solarized
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce. This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 " Autosave open files when window loses focus
 " Note: this doesn't support saving untitled buffers
@@ -187,48 +186,14 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
-"""" neocomplete
-let g:deoplete#enable_at_startup = 1
-let g:acp_enableAtStartup = 0 " Disable AutoComplPop
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#syntax#min_keyword_length = 3
-let g:deoplete#lock_buffer_name_patter = '\*ku\*'
-
-let g:deoplete#force_overwrite_completefunc=1
-
-let g:deoplete#sources#dictionary#dictionaries = {
-    \ 'default'     : '',
-    \ 'vimshell'    : $HOME.'/.vimshell_hist',
-    \ }
-
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return pumvisible() ? deoplete#close_popup() : "\<CR>"
-endfunction
+"""" coc.nvim
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>""
-
-" <C-h>, <BS>: close popup and delete backword char
-inoremap <expr><C-h> deoplete()."\<C-h>"
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  deoplete#close_popup()
-inoremap <expr><C-e>  deoplete#cancel_popup()
-inoremap <expr><Space> deoplete#cancel_popup()
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-" Haskell specific completions
-let g:necoghc_enable_detailed_browse = 1
-let g:haskellmode_completion_ghc = 0
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " ale
 " Ensure that Ale uses Stack to properly configure project deps when linting.
@@ -238,21 +203,12 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
-\  'python': ['isort', 'yapf'],
+\  'python': ['black'],
 \  'go': ['goimports']
 \}
 
 " Fix files automatically on save.
 let g:ale_fix_on_save = 1
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -263,13 +219,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
-""" Syntastic options
-map <leader>s :SyntasticToggleMode<CR>
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
 
 """ Functions
 function! InitializeDirectories()
