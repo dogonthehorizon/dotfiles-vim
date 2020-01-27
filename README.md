@@ -8,14 +8,13 @@ If you have any questions or issues please file a ticket [here][repo-issues].
 ### Requirements
 
   * `Vim >= 8.0` or greater along with the following features:
-      * `+lua`
       * `+python3`
+      * `node>=v11.x.x`
   * The vim-instant-markdown node plugin installed
       * `npm install -g instant-markdown-d`
-  * ghc-mod and hlint for Haskell development
-      * `stack install hlint ghcmod`
-  * Neovim Python plugin
-      * `pip3 install neovim`
+  * `haskell-ide-engine` for Haskell completion
+    * [Install instructions][hie-install]
+  * `yarn`
   * Recommended, but not necessary, are the following enhancements
     * A patched font for vim-airline (Lokaltog's [powerline-fonts][fonts]
     do the trick).
@@ -72,3 +71,4 @@ git submodule foreach git pull origin master
 
 [repo-issues]: https://github.com/dogonthehorizon/dotfiles-vim/issues
 [fonts]: https://github.com/Lokaltog/powerline-fonts
+[hie-install]: https://github.com/haskell/haskell-ide-engine#installation
