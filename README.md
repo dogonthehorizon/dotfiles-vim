@@ -1,5 +1,8 @@
 # dotfiles-vim ![Generic](https://img.shields.io/badge/status-active-green.svg)
 
+**DEPRECATED: see the following repo for nvim config.
+https://github.com/dogonthehorizon/dotfiles-nvim**
+
 This repo contains my personal vim and gvim configurations. They are provided
 as is!
 
